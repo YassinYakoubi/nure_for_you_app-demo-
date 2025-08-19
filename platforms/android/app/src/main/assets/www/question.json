@@ -1,0 +1,38 @@
+{
+  "fr": {
+    "q1": {"q": "Question 1 : Combien y a-t-il de types de contraceptifs hormonaux ?", "r": [2, 3, 4, ">= 5"], "s": [0, 0, 0, 1]},
+    "q2": {"q": "La pilule oestro-progestative", "r": ["c’est la pilule la plus efficace", "L’oubli d’une pilule n’a pas d’effets négatifs", "La pilule doit être prise chaque jour pendant 21 jours", "Elle agit en bloquant l’ovulation"], "s": [1, 0, 1, 1]},
+    "q3": {"q": "Pour la surveillance de la pilule oestro-progestative", "r": ["Aucune surveillance", "un bilan avant le début de prise est nécessaire", "un bilan 3 mois après est nécessaire", "Une surveillance échographique est nécessaire"], "s": [0, 0, 1, 0]},
+    "q4": {"q": "Les effets indésirables possibles de l’oestro-progestatif sont :", "r": ["Nervosité", "Prise de poids", "Tension mammaire", "Diarrhée"], "s": [1, 1, 1, 0]},
+    "q5": {"q": "Quelles sont les contre-indications majeures de la pilule oestro-progestative ?", "r": ["ATCD personnel de cancer du sein", "ATCD personnel d’embolie pulmonaire", "Hypertension artérielle non contrôlée", "Affection hépatique sévère"], "s": [1, 1, 1, 1]},
+    "q6": {"q": "Pilule micro progestative : surveillance", "r": ["aucun bilan nécessaire", "Bilan après 3 mois", "Bilan après 1 an"], "s": [1, 0, 0]},
+    "q7": {"q": "Les contre-indications de la pilule micro progestative", "r": ["Cancer du sein", "Cancer de l’endomètre", "Hypertension artérielle", "ATCD embolie pulmonaire"], "s": [0, 1, 1, 1]},
+    "q8": {"q": "La prise des pilules micro progestatives :", "r": ["La prise est continue", "Prise à la même heure", "Le retard ne doit pas dépasser 3H", "Le retard ne doit pas dépasser 12H"], "s": [1, 1, 1, 0]},
+    "q9": {"q": "L’implant", "r": ["Peut causer une aménorrhée", "Valable pour 5 ans", "Valable pour 3 ans", "Production continue de progestatifs"], "s": [1, 0, 1, 1]},
+    "q10": {"q": "Le dispositif intra-utérin", "r": ["Peut causer des spottings", "Valable pour 5 ans", "Valable pour 3 ans", "Production continue de progestatifs"], "s": [1, 1, 0, 1]}
+  },
+  "en": {
+    "q1": {"q": "How many types of hormonal contraceptives are there?", "r": [2, 3, 4, ">= 5"], "s": [0, 0, 0, 1]},
+    "q2": {"q": "The estrogen-progestin pill", "r": ["It is the most effective pill", "Missing a pill has no negative effects", "The pill must be taken every day for 21 days", "It works by blocking ovulation"], "s": [1, 0, 1, 1]},
+    "q3": {"q": "Monitoring the estrogen-progestin pill", "r": ["No monitoring", "An assessment before starting is necessary", "An assessment 3 months after is necessary", "Ultrasound monitoring is necessary"], "s": [0, 0, 1, 0]},
+    "q4": {"q": "Possible side effects of estrogen-progestins are:", "r": ["Nervousness", "Weight gain", "Breast tenderness", "Diarrhea"], "s": [1, 1, 1, 0]},
+    "q5": {"q": "What are the major contraindications of the estrogen-progestin pill?", "r": ["Personal history of breast cancer", "Personal history of pulmonary embolism", "Uncontrolled hypertension", "Severe liver disease"], "s": [1, 1, 1, 1]},
+    "q6": {"q": "Progestin-only pill: monitoring", "r": ["No assessment necessary", "Assessment after 3 months", "Assessment after 1 year"], "s": [1, 0, 0]},
+    "q7": {"q": "Contraindications of the progestin-only pill", "r": ["Breast cancer", "Endometrial cancer", "Hypertension", "History of pulmonary embolism"], "s": [0, 1, 1, 1]},
+    "q8": {"q": "Taking progestin-only pills:", "r": ["Continuous intake", "Take at the same time", "Delay should not exceed 3 hours", "Delay should not exceed 12 hours"], "s": [1, 1, 1, 0]},
+    "q9": {"q": "The implant", "r": ["May cause amenorrhea", "Valid for 5 years", "Valid for 3 years", "Continuous progestin production"], "s": [1, 0, 1, 1]},
+    "q10": {"q": "The intrauterine device", "r": ["May cause spotting", "Valid for 5 years", "Valid for 3 years", "Continuous progestin production"], "s": [1, 1, 0, 1]}
+  },
+  "ar": {
+    "q1": {"q": "قداش فما من نوع متاع موانع الحمل الهرمونية؟", "r": [2, 3, 4, ">= 5"], "s": [0, 0, 0, 1]},
+    "q2": {"q": "حبوب منع الحمل الاستروجين-بروجستيرون", "r": ["أقوى حبوب منع الحمل", "نسيان حبة ما عندوش تأثير سلبي", "تتعدى كل نهار مدة 21 يوم", "تخدم باش توقف التبويض"], "s": [1, 0, 1, 1]},
+    "q3": {"q": "كيفاش نراقب حبوب منع الحمل الاستروجين-بروجستيرون؟", "r": ["ما يلزم حتى مراقبة", "يلزم تحليل قبل ما تبدا", "تحليل بعد 3 شهور", "يلزم مراقبة بالسونار"], "s": [0, 0, 1, 0]},
+    "q4": {"q": "شنية الأعراض الجانبية لحبوب الاستروجين-بروجستيرون؟", "r": ["العصبية", "تزايد في الوزن", "وجيعة في الصدر", "إسهال"], "s": [1, 1, 1, 0]},
+    "q5": {"q": "شنية الحالات إلي ما تنجمش تاخذ فيها حبوب منع الحمل الاستروجين-بروجستيرون؟", "r": ["عندك كانسر الثدي قبل", "عندك جلطة في الرية قبل", "ضغط الدم مش متحكم فيه", "مرض كبدي خطير"], "s": [1, 1, 1, 1]},
+    "q6": {"q": "مراقبة حبوب منع الحمل البروجستيرونية", "r": ["ما يلزم حتى تحليل", "تحليل بعد 3 شهور", "تحليل بعد عام"], "s": [1, 0, 0]},
+    "q7": {"q": "شنية الحالات إلي ما تنجمش تاخذ فيها حبوب منع الحمل البروجستيرونية؟", "r": ["كانسر الثدي", "كانسر بطانة الرحم", "ضغط الدم", "جلطة في الرية قبل"], "s": [0, 1, 1, 1]},
+    "q8": {"q": "كيفاش تتعدى حبوب منع الحمل البروجستيرونية؟", "r": ["تتعدى ديما", "لازم تتعدى في نفس الوقت", "التأخير ما يزيدش على 3 ساعات", "التأخير ما يزيدش على 12 ساعة"], "s": [1, 1, 1, 0]},
+    "q9": {"q": "الزرع الهرموني", "r": ["ينجم يسبب انقطاع العادة", "صالح 5 سنين", "صالح 3 سنين", "يخدم بروجستيرون ديما"], "s": [1, 0, 1, 1]},
+    "q10": {"q": "اللولب الرحمي", "r": ["ينجم يسبب نزيف خفيف", "يصلح 5 سنين", "يصلح 3 سنين", "يخدم بروجستيرون ديما"], "s": [1, 1, 0, 1]}
+  }
+}

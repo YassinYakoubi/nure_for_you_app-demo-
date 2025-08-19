@@ -1,0 +1,177 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.intro1{
+    font-family: "Merriweather";
+    background-color: #d06b70;
+    color: #ffffff;
+    height: 100vh;
+    width: 100vw;    
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 100;
+}
+
+.intro2,.intro3{
+    display: none;
+}
+.intro2 img ,.intro3 img{
+    width: 100%;
+}
+
+.homepage{
+    font-family: "DM Sans";
+    overflow: hidden;
+    display: none;
+}
+.details{
+    width: 25%;
+    height: 6vh;
+    margin-right: -10px;
+    border: 1px solid black;
+    border-radius:15px;
+    float: right;
+    margin-top: 15%;
+    background-image: url(./Bienvenu/details.svg);
+    background-size: 80% ;
+    background-position: center;
+}
+.homepage h1,h5{
+    text-align: center;display: flex;
+}
+.homepage h1{
+    font-weight: 600;
+    font-size: 3.5em;
+    color: #c52e2f;
+}
+.homepage h5{
+    text-decoration: underline;
+    font-weight: 500;
+}
+.titlewrap{
+    margin: auto;
+    margin-top: 20vh;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.eh{
+   margin-top: 3vh;
+}
+form{
+   width: 85%;
+   height: 50vh;
+   border: 2px solid black;
+   border-radius: 20px;
+   margin: auto;
+   margin-top: 5vh;
+   background-image: url(./Bienvenu/Bienvenu.png);
+   background-size: 100%;
+   background-position:50% 60%;
+   background-repeat: no-repeat;
+  
+}
+form h6{
+    margin-top: 4%;
+    color: #c52e2e;
+    font-weight: 420;
+    font-size: .8em;
+    text-transform: uppercase;
+    margin-left: 8%;
+    letter-spacing: 1px;
+}
+
+form input{
+    width: 85%;
+    margin-left: 7.5%;
+    margin-top: 2%;
+    height: 6vh;
+    border: 1px solid grey;
+    background-color: #fac0c380;
+    border-radius: 20px;
+}
+
+.btn1{
+    width: 84%;
+    height: 5.5vh;
+    margin-left: 8%;
+    margin-top: 3vh;
+    border-radius: 6px;
+    font-size: .99em;
+    background-color: #c52e2e;
+    border: none;
+    color: #ffffff;
+    font-family: "Dm Sans";
+}
+form a {
+    text-decoration: none;
+}
+form a h4{
+    color: #c52e2f;
+    margin-top: 3.5%;
+    font-size: .9em;
+    margin-left: 10%;
+    font-weight: 800;
+}
+.wrapp{
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 84%;
+    height: fit-content;
+    display: flex;
+}
+.btn2{
+    width: 35%;
+    height: 4.5vh;
+    border: 1px solid rgb(60, 60, 60);
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 800;
+    color: white;
+    background-color: #d06b70;
+}
+.wrap{
+    border-left: 2px solid gray;
+    font-weight: 600;
+    font-size: .85em;
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+.wrap h4{
+   margin-left: 3%;
+   font-weight: 530;
+   color: gray;
+}
+input[type="text"], input[type="password"] {
+    font-size: 1.2em;
+    font-family: "DM Sans" ;
+    font-weight: 300;
+    padding-left: 5%;
+  }
+.logo{
+    position: absolute;
+    bottom: -27px;
+    left: calc(50vw - 91px);
+    overflow: hidden;
+    }
+
+    @media screen and (max-height: 730px) { 
+        .logo { 
+            display: none; }
+        
+        }
+
+    @media screen and (min-height: 730px) { 
+            .logo { 
+                display: block; }
+            
+            }

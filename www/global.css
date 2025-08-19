@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Dm Sans';
+    src: url('fonts/DM_Sans\,Merriweather/DM_Sans/static/DMSans-Medium.ttf') format('truetype'); /* Only TTF font */
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('fonts/DM_Sans\,Merriweather/Merriweather/Merriweather-Bold.ttf') format('truetype'); /* Only TTF font */
+    font-weight: normal;
+    font-style: normal;
+  }
+  

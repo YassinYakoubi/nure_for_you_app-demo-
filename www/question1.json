@@ -1,0 +1,14 @@
+{
+    "fr": {
+        "a": "Le processus de cette application consiste à vous questionner à l'aide d'un quiz afin de tester vos connaissances concernant l'utilisation des contraceptifs hormonaux, et ainsi corriger vos lacunes.",
+        "b": "Pour vous guider, Madame, veuillez répondre à ce quiz."
+    },
+    "en": {
+        "a": "The process of this application consists of questioning you with a quiz to test your knowledge about the use of hormonal contraceptives, and thus correct your gaps.",
+        "b": "To guide you, Madam, please answer this quiz."
+    },
+    "ar": {
+        "a": "تتكون عملية هذا التطبيق من طرح أسئلة عليك من خلال اختبار لتقييم معرفتك باستخدام موانع الحمل الهرمونية، وبالتالي تصحيح نواقصك.",
+        "b": "لتوجيهك سيدتي، يرجى الإجابة على هذا الاختبار."
+    }
+}

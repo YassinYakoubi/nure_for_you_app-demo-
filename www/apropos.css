@@ -1,0 +1,47 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.logo{
+    position: absolute;
+    bottom: -2%;
+    left: calc(50vw - 99px);
+   
+}
+
+.go_back{
+    position: absolute;
+    width: 25%;
+    height: 6vh;
+    margin-left: -25px;
+    border: 1px solid black;
+    border-radius:15px;
+    float: left;
+    top: 12vh;
+    background-image: url(./Bienvenu/go_back.png);
+    background-size: 55% ;
+    background-position: 100% center;
+    background-repeat: no-repeat;
+}
+.wrapp{
+    margin: auto;
+    margin-top: 5vh;
+    width: 80vw;
+    height: 50vh;
+    margin-top: 20vh;
+    font-family: "Dm Sans";
+}
+h1{
+    color: #c52e2f;
+    text-align: center;
+    font-size: 2.6em;
+}
+h3{
+    margin-top: 11%;
+    font-size: 1.5em;
+    color: #4d4c4c;
+    text-align: center;
+    text-wrap: wrap;
+}

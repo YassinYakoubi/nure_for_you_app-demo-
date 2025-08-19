@@ -1,0 +1,73 @@
+
+.twrap{
+    width: 70%;
+    margin-left: 3%;
+}
+
+form .beh{
+    margin-top: 4%;
+    color: #c52e2e;
+    font-weight: 420;
+    font-size: .8em;
+    text-transform: uppercase;
+    width: fit-content;
+    letter-spacing: 1px;
+}
+.yeziwrap{
+    padding-bottom: 6%;
+}
+
+form .meh{
+    width: 15%;
+}
+.ttwrap{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+.formwrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.bap{
+ 
+    width: 30%;
+
+}
+.bap input{
+    width: 15vw;
+    margin-left: 2vw;
+    text-align: center;
+}
+.bap h6{
+    width: 15vw;
+    margin-left: 2vw;
+    text-align: center;
+}
+.go_forward{
+    position: absolute;
+    border: 1px solid black;
+    width: 25%;
+    height: 6vh;
+    border-radius:15px;
+    margin-top:16%;
+    rotate: 180deg;
+    right: -5%;
+    background-image: url(./Bienvenu/go_back.png);
+    background-size: 55% ;
+    background-position: 100% center;
+    background-repeat: no-repeat;
+}
+@media(max-width:680px){
+
+    form{
+        height: fit-content;
+       
+    }
+    
+}

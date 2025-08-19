@@ -1,0 +1,23 @@
+{
+    "en": {
+        "settings": "Settings",
+        "languages": "Languages",
+        "logout": "Logout",
+        "about": "About",
+        "dedications": "Dedications"
+    },
+    "fr": {
+        "settings": "Paramètres",
+        "languages": "Langues",
+        "logout": "Déconnexion",
+        "about": "À propos",
+        "dedications": "Dédicaces"
+    },
+    "ar": {
+        "settings": "الإعدادات",
+        "languages": "اللغات",
+        "logout": "تسجيل الخروج",
+        "about": "حول",
+        "dedications": "الإهداءات"
+    }
+}

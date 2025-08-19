@@ -1,0 +1,23 @@
+{
+    "fr": {
+        "title": "Votre score est : ",
+        "stade": "Stade",
+        "type": ["Initial", "Intermédiaire", "Avancé"],
+        "r": "Vérifier vos réponses",
+        "c": "Nous nous soucions de votre avis !"
+    },
+    "ar": {
+        "title": "درجتك هي : ",
+        "stade": "المرحلة",
+        "type": ["ابتدائي", "متوسط", "متقدم"],
+        "r": "تحقق من إجاباتك",
+        "c": "يهمنا برأيك!"
+    },
+    "en": {
+        "title": "Your score is: ",
+        "stade": "Stage",
+        "type": ["Beginner", "Intermediate", "Advanced"],
+        "r": "Check your answers",
+        "c": "We care about your opinion!"
+    }
+}

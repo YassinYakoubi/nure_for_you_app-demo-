@@ -1,0 +1,26 @@
+{
+    "en": {
+        "signup": "Sign-up",
+        "fullName": "Full name",
+        "age": "Age",
+        "emailOrPhone": "Email or phone number",
+        "password": "Password",
+        "confirmPassword": "Confirm password"
+    },
+    "fr": {
+        "signup": "S'inscrire",
+        "fullName": "Nom complet",
+        "age": "Âge",
+        "emailOrPhone": "Email ou numéro de téléphone",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmez le mot de passe"
+    },
+    "ar": {
+        "signup": "إنشاء حساب",
+        "fullName": "الاسم الكامل",
+        "age": "العمر",
+        "emailOrPhone": "البريد الإلكتروني أو رقم الهاتف",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور"
+    }
+}

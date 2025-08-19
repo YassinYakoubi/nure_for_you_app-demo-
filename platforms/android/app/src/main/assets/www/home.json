@@ -1,0 +1,35 @@
+{
+    "en": {
+        "welcome": "Welcome!",
+        "login": "Login",
+        "signIn": "Sign-in to continue",
+        "emailOrPhone": "Email or phone number",
+        "password": "Password",
+        "logIn": "Log in",
+        "forgotPassword": "Forgot password?",
+        "noAccount": "Don't have an account? You can",
+        "signUp": "Sign-up"
+    },
+    "fr": {
+        "welcome": "Soyez le bienvenu !",
+        "login": "Connexion",
+        "signIn": "Connectez-vous pour continuer",
+        "emailOrPhone": "Email ou numéro de téléphone",
+        "password": "Mot de passe",
+        "logIn": "Se connecter",
+        "forgotPassword": "Mot de passe oublié ?",
+        "noAccount": "Vous n'avez pas de compte ? Vous pouvez",
+        "signUp": "S'inscrire"
+    },
+    "ar": {
+        "welcome": "أهلاً وسهلاً!",
+        "login": "تسجيل الدخول",
+        "signIn": "قم بتسجيل الدخول للمتابعة",
+        "emailOrPhone": "البريد الإلكتروني أو رقم الهاتف",
+        "password": "كلمة المرور",
+        "logIn": "تسجيل الدخول",
+        "forgotPassword": "هل نسيت كلمة المرور؟",
+        "noAccount": "ليس لديك حساب؟ يمكنك",
+        "signUp": "إنشاء حساب"
+    }
+}
