@@ -7,216 +7,231 @@ Mission: Empowering users to personalize devices with custom designs, inspired b
 ---
 
 ## Table of Contents
-1. Executive Summary  
-2. Business & Market (Tunisia)  
-3. MVP & Stretch Features  
-4. Core User Flows  
-5. System Architecture  
-6. Repository Strategy & Structure  
-7. Key Initialization Files (Samples)  
-8. API Specification  
-9. Data Model & ERD  
-10. UI Libraries & Components  
-11. Design Tokens  
-12. Accessibility & Internationalization (i18n)  
-13. Canva API Integration Approach  
-14. Deployment & Infrastructure Plan  
-15. Security Checklist  
-16. Testing & QA Strategy  
-17. Monitoring & Analytics  
-18. Product Roadmap (12 Weeks)  
-19. Appendices (Glossary, Packages, Commands, README Template, Ethics)
+1. Executive Summary
+2. Business & Market (Tunisia Focus)
+3. User Personas & Success Metrics
+4. MVP & Feature Prioritization
+5. Core User Flows
+6. Architecture Overview
+7. Repository Strategy & Layout
+8. Key Example Files
+9. API Specification
+10. Data Model & ERD
+11. UI Components & Libraries
+12. Design Tokens
+13. Accessibility & Internationalization
+14. Canva API Integration Strategy
+15. Deployment & Infrastructure Plan
+16. Security Checklist
+17. Testing & QA Strategy
+18. Monitoring & Analytics
+19. Roadmap (3-Month Plan)
+20. Appendices (Glossary, Packages, Skeleton Commands, README Template, Ethics)
 
 ---
 
-## 1. Executive Summary
-Plalap is a Tunisia-based customization platform enabling users to design and order high-quality device skins, cases, and decals—functionally mirroring Skinit’s proven model. It targets Tunisian youth (18–35), gamers, creatives, and SMEs seeking branded assets. Users can upload artwork, use Canva-powered templates, preview in real time on phones, laptops, and consoles, and complete localized checkout in TND. The platform differentiates via trilingual UX (Arabic/French/English), local payment gateways (Flouci, Paymee, SMT integration), and regional shipping optimization. Revenue streams: direct product sales, licensed brand collaborations (pop culture, football clubs), B2B bulk orders, and affiliate/creator programs. Success metrics: CAC vs. LTV, design-to-order conversion rate, average order value (AOV), monthly active designers (MAD), and B2B repeat rate. Initial rollout focuses on MVP skin customization and reliable production/export pipeline, then expands to AR previews, AI design helpers, and marketplace for creators.
+## 1. Executive Summary (<=200 words)
+Plalap is a Tunisian digital platform enabling users and businesses to design, preview, and order custom skins, cases, decals, and accessories for devices (phones, laptops, consoles), modeled on Skinit’s feature set but localized for Tunisia. It targets digitally engaged youth (18–35), creators, gamers, and SMEs seeking branded materials. Core value: localized pricing in TND, trilingual UX (Arabic/French/English), fast design-to-order workflow, and bulk tools for corporate branding. Differentiators: Canva-powered template customization, 3D real-time previews, licensed pop culture collaborations (phased), and scalable manufacturing-ready export pipeline. Initial monetization: product margins, bulk discounts, and later affiliate/creator marketplace. Tunisia’s growing e-commerce adoption and rising personalization culture create a timely market entry window. Phase 1 delivers a lean MVP with high-impact features; phases 2–3 introduce AI enhancements (design suggestions), AR device placement, and partner storefronts. The platform architecture balances speed (Next.js + Vercel) with robust backend (Django + PostgreSQL) and extensibility (Node microservices for image processing & print exports). Security, accessibility, and IP compliance are integrated from inception. Goal: achieve product-market fit within 90 days, focusing on conversion, repeat order rate, and corporate pipeline activation.
 
 ---
 
-## 2. Business & Market (Tunisia)
-### Market Context
-- Tunisia’s digital economy & e-commerce adoption accelerating (mobile-first purchasing, social commerce).  
-- Market drivers: smartphone penetration (~80%+), increasing personalization culture, SME branding demand.  
-- Gap: Lack of localized, high-quality, on-demand device skin printing with polished UX equal to global players.
-
-### Competitive Landscape
-| Competitor | Scope | Strength | Weakness (Local Context) |
-|------------|-------|----------|---------------------------|
-| Skinit (Global) | Intl | Brand/licensing maturity | No local currency/logistics |
-| Generic Print Shops (Local) | Local | Physical presence | Poor UX/no online preview |
-| AliExpress Sellers | Global | Low cost | Long shipping, no Arabic/French UI |
-| Case App / Redbubble | Global | Creator ecosystems | Currency & shipping friction |
-
-### Differentiators
-- Real-time 3D localized previews (Arabic interface).
-- Canva template integration + brand packs (licensed after compliance).
-- Local payment & COD (where feasible) reduces friction.
-- Corporate bulk portal (pricing tiers/print-ready exports).
-- Structured printing pipeline (consistent margins/bleed guidelines).
-
-### Personas
-1. “Aya” (22, university student, bilingual, wants anime/art skins).  
-2. “Omar” (28, startup founder wanting branded laptop skins).  
-3. “Nadia” (34, marketing manager ordering bulk promotional console wraps).  
-4. “Houssem” (19, gamer customizing PS5 + controller bundle).
-
-### Localization & Language
-- Default bilingual (Arabic/French), English optional toggle.
-- RTL handling for Arabic (Tailwind `dir="rtl"` contexts).
-- Currency: TND; fallback pricing for USD-based licensing costs (internal).
-
-### Success Metrics (KPIs)
-- Month 3: 2,000 registered users / 400 orders.  
-- Design→Add-to-Cart Conversion ≥ 25%.  
-- Repeat Purchase Rate ≥ 30% (Month 6).  
-- B2B Share of Revenue ≥ 20% (Month 9).  
-- Avg Rendering Time < 1.2s for 2D preview; < 2.5s for 3D.
+## 2. Business & Market (Tunisia Focus)
+- Market Context:
+  - Growing smartphone penetration (urban youth adoption high; >75% smartphone access; sources: ITU, World Bank trend data).
+  - Expanding e-commerce infrastructure; increased trust in digital payments (2023–2024 local press).
+  - Lack of localized premium customization platforms (gap vs. global players pricing & shipping friction).
+- Competitive Set:
+  - Global: Skinit, CaseApp, Redbubble (longer shipping, currency friction).
+  - Regional: Small Instagram-based print vendors (manual ordering, no real-time preview tech).
+  - Local Print Shops: Limited online personalization workflow & no template automation.
+- Opportunity:
+  - Faster localized logistics, lower cost in TND, culturally relevant licensed/artist content.
+  - B2B branded accessories for events, SaaS startups, telecom promotions.
+- Monetization:
+  - Retail margin per unit (cost-based pricing + markup).
+  - Volume discounts tiers (e.g., 50+, 200+, 500+ units).
+  - Future: Creator marketplace commission, corporate subscription portal.
+- Localization:
+  - Default languages: Arabic (ar), French (fr), English (en).
+  - RTL support for Arabic UI.
+  - TND currency & approximate USD conversion badge.
+- Risks:
+  - Licensing negotiations timeline.
+  - Local payment gateway integration complexity.
+  - Fulfillment SLA consistency.
+- Mitigations:
+  - Phase shipping partners (local courier + regional aggregator).
+  - Start with CC-free “cash on delivery” (COD) + wallet pilot; add secure card rails after.
+- High-Level Metrics:
+  - MAU, Design-to-Add-to-Cart rate, Cart-to-Order conversion, Avg. Order Value (AOV), Repeat Order %, Bulk Inquiry Lead→Quote→PO funnel.
 
 ---
 
-## 3. MVP & Stretch Features
-### MVP (Phase 1 – Must Mirror Skinit Core)
-1. Auth (email/password + OAuth optional later).  
-2. Device catalog (phones, laptops, consoles) + variant metadata.  
-3. Upload image (validation, safe MIME, size).  
-4. Canva template picker (pre-sized masks).  
-5. Real-time 2D/3D preview (Three.js + layered canvas).  
-6. Cart & localized checkout (TND, local payment).  
-7. Order lifecycle (pending → processing → shipped).  
-8. Email notifications (order confirmation, shipment).  
-9. Corporate bulk request form (lead capture).  
-10. License collection area (flagged templates requiring rights acceptance).
-
-### Stretch Features (Phase 2+)
-1. AI design suggestions (OpenAI or local model for pattern generation).  
-2. AR preview (WebXR / model overlay via device camera).  
-3. Creator marketplace & revenue share.  
-4. Affiliate/referral tracking.  
-5. Saved “Design Collections”.  
-6. Dynamic colorway generator (palette swaps).  
-7. Bulk CSV order import for enterprises.  
-8. In-editor guidelines for print bleed & safe zones toggle.
+## 3. User Personas & Success Metrics
+- Persona A: “Amina” – 22-year-old student & mobile gamer; custom console & phone skins.
+- Persona B: “Karim” – 29-year-old startup marketer ordering branded laptop decals.
+- Persona C: “Corporate Buyer” – Office admin procuring event swag (bulk).
+Metrics:
+- Activation: 60% of new accounts create ≥1 design in first session.
+- Preview Performance: <1.5s render for standard designs (cached device meshes).
+- Bulk Pipeline: 10 qualified corporate leads in first 90 days.
+- NPS Target: ≥40 by month 4.
 
 ---
 
-## 4. Core User Flows
+## 4. MVP & Feature Prioritization
+MVP (Must-Have):
+1. Auth (email/password + social optional later).
+2. Device model catalog & selection.
+3. Design upload (PNG/JPEG/SVG) + cropping.
+4. Template library (basic + Canva-driven placeholders).
+5. Real-time 2D/3D preview.
+6. Cart & checkout (COD + local payment gateway integration stub).
+7. Order placement & tracking (basic statuses).
+8. Email subscription (newsletter opt-in).
+Stretch (Phase 2 & 3):
+1. AI design suggestion (prompt → pattern).
+2. AR preview via WebXR (mobile camera overlay).
+3. Affiliate / creator storefront pages.
+4. Multi-item batch editor (applies brand kit).
+5. Bulk corporate pricing configurator.
+6. Design version history & collaboration.
+7. Loyalty points.
+8. Gift card codes.
+
+---
+
+## 5. Core User Flows
+
 ### Flow 1: Signup → Create Custom Skin → Order
-Narrative: User registers, selects device, uploads or picks a template, adjusts design (scale/position), previews, adds to cart, completes checkout with TND payment, and receives email confirmation.
+Narrative: User lands on localized homepage, registers (email + password), selects device model (e.g., iPhone 14), uploads design or chooses Canva template, adjusts placement on 3D preview, adds to cart, selects payment (COD initially), confirms order, receives confirmation email with tracking stub.
 
 ```mermaid
 flowchart LR
-A[Visit Site] --> B[Signup/Login]
+A[Landing] --> B[Signup/Login]
 B --> C[Select Device Model]
-C --> D[Upload Image / Choose Template]
-D --> E[Adjust & Preview 2D/3D]
-E --> F[Add to Cart]
-F --> G[Checkout - Payment]
-G --> H[Order Created]
-H --> I[Email Confirmation]
-```
-
-### Flow 2: Returning User Modifies Previous Design
-Narrative: Authenticated user opens past design, duplicates it, applies Canva template change, generates updated preview, and reorders faster using stored shipping profile.
-
-```mermaid
-flowchart LR
-A[Dashboard] --> B[My Designs]
-B --> C[Select Design]
-C --> D[Duplicate]
-D --> E[Edit in Editor]
-E --> F[Preview Updated]
+C --> D[Upload Image or Choose Template]
+D --> E[Customize (Crop/Scale/Position)]
+E --> F[3D Preview Render]
 F --> G[Add to Cart]
-G --> H[Fast Checkout]
-H --> I[Order Update Email]
+G --> H[Checkout: Address & Payment]
+H --> I[Order Created]
+I --> J[Email Confirmation]
 ```
 
-### Flow 3: Corporate Bulk Order Request
-Narrative: Business user fills bulk form specifying quantities and device models; system creates lead entity, internal team prices and responds; upon approval, bulk order is created with discounted tier pricing.
+### Flow 2: Corporate Bulk Order
+Narrative: Corporate buyer selects “Bulk Orders,” uploads logo pack, selects multiple device categories, enters quantities, system applies tiered pricing, generates quote, buyer confirms & backend flags as “Awaiting Payment,” sales follow-up triggers.
 
 ```mermaid
 flowchart LR
-A[Bulk Landing] --> B[Form Submit]
-B --> C[Lead Record]
-C --> D[Internal Review]
-D --> E[Quote Sent]
-E --> F[Approval / Payment]
-F --> G[Bulk Order Processing]
-G --> H[Production Export]
-H --> I[Shipment & Tracking]
+A[Bulk Orders Page] --> B[Upload Brand Assets]
+B --> C[Select Device Categories]
+C --> D[Enter Quantities]
+D --> E[Pricing Engine Tier Calc]
+E --> F[Quote Preview]
+F --> G[Request Formal Quote]
+G --> H[Sales CRM / Notification]
+```
+
+### Flow 3: Template Design via Canva → Export → Order
+Narrative: User opens editor with base template, launches Canva embed to modify layout, returns with design reference ID, preview service composes mockups, user finalizes design and orders.
+
+```mermaid
+sequenceDiagram
+participant U as User
+participant FE as Frontend
+participant Canva as Canva API
+participant BE as Django API
+participant Node as Node Export Service
+U->>FE: Open Template Editor
+FE->>Canva: Launch Embedded Session
+Canva-->>FE: Template JSON/Design ID
+FE->>BE: Save Design Metadata
+BE->>Node: Request Render Job
+Node->>S3: Upload Preview Images
+Node-->>BE: Render Complete (URLs)
+BE-->>FE: Preview URLs
+U->>FE: Add to Cart & Checkout
 ```
 
 ---
 
-## 5. System Architecture
+## 6. Architecture Overview
+
 ```mermaid
 graph TD
-U[User Browser<br/>Next.js + Tailwind] --> FE[Next.js Frontend (Vercel)]
-FE -->|REST/JSON| API[Django REST API]
-FE -->|WebSockets (preview events)| PRE[Preview Service (Node)]
-API --> DB[(PostgreSQL)]
-API --> OBJ[(S3-Compatible Storage)]
-API --> CACHE[(Redis)]
-API --> QUEUE[(Worker Queue / Celery)]
-QUEUE --> WRK[Node/Django Workers<br/>Print Export, Canva Jobs]
-WRK --> CANVA[Canva API]
-PRE --> CANVA
-WRK --> PRN[Print Export Formatter<br/>(High-res PNG/PDF)]
-API --> PAY[Local Payment Gateways<br/>Flouci/Paymee/SMT]
-API --> SHIP[Shipping APIs / Partner]
-API --> EMAIL[Email Service (SendGrid/Mailjet)]
-MON[Monitoring (Sentry/Grafana)] --> API
-ANL[Analytics (PostHog/Vercel)] --> FE
+A[Next.js Frontend (Vercel)] -->|REST/JSON| B[Django API]
+A -->|WebSocket| N[Preview/Render Status Service]
+B --> C[(PostgreSQL)]
+B --> D[(Redis Cache)]
+B --> E[S3/Object Storage - Designs/Exports]
+B --> F[Payment Gateway (Local + Future Card)]
+B --> G[Email Service (e.g., Sendinblue)]
+B --> H[Shipping APIs]
+B --> I[Auth Service (Django JWT / Sessions)]
+B --> J[Node.js Render Worker (Canva + Image Magick)]
+J --> E
+A --> K[CDN (Images/Static Previews)]
+J --> L[Canva API]
+B --> L
+B --> M[Bulk Pricing Engine Module]
 ```
 
 Responsibilities:
-- Frontend: Rendering, i18n, 3D previews, design editor orchestration.
-- Django API: Auth, CRUD (designs/orders), business logic, licensing constraints.
-- Node Services: Preview pipeline, heavy image transforms, Canva job orchestration.
-- Storage: Original uploads + processed exports.
-- Queue/Workers: Asynchronous rendering, export, email dispatch.
-- Payment/Shipping: Localized transactional integration.
-- Canva: Template management + design session embedding.
+- Next.js: UI, SSR/ISR pages, i18n, editor orchestration.
+- Django: Auth, business logic, orders, device catalog, pricing.
+- Node Worker: Image composition, 3D unwrap mapping, print-ready exports (PDF).
+- Canva API: Template editing & design asset retrieval.
+- Redis: Caching device meshes, signed upload tokens, rate limits.
+- PostgreSQL: Users, Designs, Orders, Templates, DeviceModels, Licenses.
+- S3: Source uploads, processed previews, final print PDFs.
+- Payment Gateway: Local TND transactions + COD markers.
 
 ---
 
-## 6. Repository Strategy & Structure
-Monorepo Justification: Small team, shared types (via TypeScript for frontend & Node workers), unified CI/CD, simplified cross-service refactors.
+## 7. Repository Strategy & Layout
+- Approach: Monorepo for velocity; shared types, unified CI, simplified environment management.
+- Justification: Small team, cross-cutting assets (component library, shared schema), single pipeline.
 
-### Proposed Structure
-```text
+Folder Principles:
+- apps/: deployable applications.
+- packages/: shared logic (ui, config, types).
+- services/: background workers / specialized tasks.
+- infra/: IaC & deployment scripts.
+- docs/: architectural docs & ADRs.
+
+File Tree:
+
+```bash
 plalap/
   apps/
-    frontend/        # Next.js app (UI, pages, i18n, design editor)
-    backend/         # Django project (REST API, admin, auth, orders)
+    frontend/            # Next.js app
+    backend/             # Django project root
   services/
-    canva-worker/    # Node service handling Canva template sync/export
-    preview-service/ # Node Express/WebSocket for live previews
+    canva-worker/        # Node image/render/export worker
   packages/
-    ui/              # Shared React components
-    config/          # Shared ESLint, Tailwind presets
-    types/           # Shared TypeScript type declarations (API contracts)
+    ui/                  # Shared React UI components
+    types/               # Shared TypeScript definitions
+    config/              # Shared ESLint, Tailwind presets
   infra/
-    terraform/       # (Optional) infra as code (S3, RDS, Redis)
-    github-actions/  # CI/CD workflows
-  scripts/
-    dev/             # Bootstrap scripts, local env setup
+    docker/              # Dockerfiles
+    k8s/                 # (Optional future) manifests
+    terraform/           # Infra as code (S3, Redis, DB)
+  scripts/               # Dev utilities
   docs/
-    architecture/    # Diagrams, decisions (ADR)
+    adr/                 # Architecture Decision Records
+  tests/
+    e2e/                 # Playwright specs
   .github/
-    workflows/       # CI YAML
+    workflows/           # CI/CD actions
   README.md
-  package.json       # Monorepo root scripts (pnpm or yarn workspaces)
-  pnpm-workspace.yaml
-  requirements.lock  # Backend pinned deps (pip-compile)
 ```
 
 ---
 
-## 7. Key Initialization Files (Samples)
+## 8. Key Example Files
 
-### Frontend package.json
-```json
+```json name=apps/frontend/package.json
 {
   "name": "plalap-frontend",
   "private": true,
@@ -228,33 +243,37 @@ plalap/
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "14.x",
-    "react": "18.x",
-    "react-dom": "18.x",
+    "next": "14.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "next-intl": "^3.0.0",
-    "react-query": "^3.39.0",
-    "three": "^0.164.0",
-    "tailwindcss": "^3.4.0",
-    "clsx": "^2.0.0"
+    "swr": "^2.2.0",
+    "three": "^0.160.0",
+    "react-hook-form": "^7.51.0",
+    "clsx": "^2.0.0",
+    "axios": "^1.6.8",
+    "@headlessui/react": "^1.7.0",
+    "zustand": "^4.5.0"
   }
 }
 ```
 
-### Tailwind Config
-```js
-// apps/frontend/tailwind.config.js
+```javascript name=apps/frontend/tailwind.config.js
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "media",
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "../../packages/ui/**/*.{js,ts,jsx,tsx}"],
+  darkMode: 'media',
   theme: {
     extend: {
       colors: {
-        primary: "#145DA0",
-        secondary: "#1C7293",
-        accent: "#F1C40F",
-        bg: "#F8F9FB",
-        text: "#1A1A1A",
-        success: "#2ECC71"
+        primary: '#0455A4',
+        secondary: '#FFB703',
+        accent: '#FF3366',
+        bg: '#F7F9FC',
+        text: '#1A1D21',
+        success: '#16A34A'
+      },
+      fontFamily: {
+        sans: ['"Inter"', '"Noto Sans Arabic"', 'system-ui']
       }
     }
   },
@@ -262,458 +281,512 @@ module.exports = {
 };
 ```
 
-### Django requirements.txt
-```
-Django==5.0.3
-djangorestframework==3.15.1
-django-cors-headers==4.3.1
-psycopg2-binary==2.9.9
-Pillow==10.1.0
+```txt name=apps/backend/requirements.txt
+Django==5.0
+djangorestframework==3.15.0
+django-cors-headers==4.3.0
+psycopg[binary]==3.1.18
+Pillow==10.2.0
 boto3==1.34.0
-redis==5.0.1
-celery==5.3.6
+redis==5.0.3
 python-dotenv==1.0.1
 drf-spectacular==0.27.2
 ```
 
-### Django settings snippet
-```python
-# apps/backend/config/settings.py (extract)
+```python name=apps/backend/config/settings_example.py
 import os
-from dotenv import load_dotenv
-load_dotenv()
-
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "CHANGE_ME")
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = ["localhost", "plalap.app"]
+LANGUAGES = [("ar","Arabic"),("fr","French"),("en","English")]
+INSTALLED_APPS = [
+  "django.contrib.auth","django.contrib.contenttypes","django.contrib.sessions","django.contrib.messages",
+  "django.contrib.staticfiles","rest_framework","corsheaders","designs","orders"
+]
+MIDDLEWARE = ["corsheaders.middleware.CorsMiddleware","django.middleware.security.SecurityMiddleware",
+  "django.contrib.sessions.middleware.SessionMiddleware","django.middleware.common.CommonMiddleware",
+  "django.middleware.csrf.CsrfViewMiddleware","django.contrib.auth.middleware.AuthenticationMiddleware"]
 DATABASES = {
-  "default": {
-    "ENGINE": "django.db.backends.postgresql",
-    "NAME": os.getenv("DB_NAME"),
-    "USER": os.getenv("DB_USER"),
-    "PASSWORD": os.getenv("DB_PASS"),
-    "HOST": os.getenv("DB_HOST", "localhost"),
-    "PORT": os.getenv("DB_PORT", "5432")
-  }
+ "default": {
+   "ENGINE":"django.db.backends.postgresql",
+   "NAME": os.getenv("DB_NAME","plalap"),
+   "USER": os.getenv("DB_USER","plalap"),
+   "PASSWORD": os.getenv("DB_PASSWORD",""),
+   "HOST": os.getenv("DB_HOST","localhost"),
+   "PORT": os.getenv("DB_PORT","5432")
+ }
 }
-
-CACHES = {
-  "default": {
-    "BACKEND": "django_redis.cache.RedisCache",
-    "LOCATION": os.getenv("REDIS_URL", "redis://localhost:6379/0")
-  }
-}
-
-AWS_STORAGE_BUCKET_NAME = os.getenv("S3_BUCKET")
-CANVA_API_KEY = os.getenv("CANVA_API_KEY")
-LOCAL_CURRENCY = "TND"
+AWS_S3_BUCKET = os.getenv("AWS_S3_BUCKET","plalap-designs")
+REDIS_URL = os.getenv("REDIS_URL","redis://localhost:6379/0")
+CANVA_API_KEY = os.getenv("CANVA_API_KEY","")
 ```
 
-### Node Canva Worker (server.js)
-```js
-// services/canva-worker/server.js
-import express from "express";
-import fetch from "node-fetch";
+```javascript name=services/canva-worker/server.js
+import express from 'express';
+import axios from 'axios';
+import sharp from 'sharp';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '25mb' }));
 
-const CANVA_API_KEY = process.env.CANVA_API_KEY;
+const s3 = new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' });
 
-app.post("/export", async (req, res) => {
-  const { designId, format = "PNG" } = req.body;
+app.post('/render', async (req, res) => {
+  try {
+    const { canvaDesignId, deviceTemplateKey } = req.body;
+    // 1. Get design asset from Canva
+    const design = await axios.get(`https://api.canva.com/v1/designs/${canvaDesignId}`, {
+      headers: { Authorization: `Bearer ${process.env.CANVA_API_KEY}` }
+    });
+    // 2. Download primary image layer
+    const imageUrl = design.data?.preview?.url;
+    const imgResp = await axios.get(imageUrl, { responseType: 'arraybuffer' });
 
-  // Example pseudo-call (replace with real Canva endpoints)
-  const r = await fetch(`https://api.canva.com/v1/designs/${designId}/exports`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${CANVA_API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ format })
-  });
+    // 3. Composite with device mask (simplified)
+    const deviceMaskBuffer = await fetchDeviceMask(deviceTemplateKey); // custom helper
+    const final = await sharp(imgResp.data)
+      .resize(1800, 3600)
+      .composite([{ input: deviceMaskBuffer, blend: 'dest-in' }])
+      .png()
+      .toBuffer();
 
-  if (!r.ok) {
-    return res.status(500).json({ error: "Export failed" });
+    // 4. Upload to S3
+    const key = `previews/${canvaDesignId}-${Date.now()}.png`;
+    await s3.send(new PutObjectCommand({
+      Bucket: process.env.S3_BUCKET,
+      Key: key,
+      Body: final,
+      ContentType: 'image/png'
+    }));
+
+    res.json({ status: 'ok', previewUrl: `https://${process.env.CDN_DOMAIN}/${key}` });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'Render failed' });
   }
-
-  const data = await r.json();
-  res.json({ status: "queued", data });
 });
 
-app.listen(4002, () => console.log("Canva worker running on 4002"));
+function fetchDeviceMask(templateKey) {
+  // Placeholder: load from local fs or S3 (vector->raster)
+  return sharp({ create: { width: 1800, height: 3600, channels: 4, background: '#ffffffff' }})
+    .png()
+    .toBuffer();
+}
+
+app.listen(4001, () => console.log('Canva worker running on 4001'));
 ```
 
 ---
 
-## 8. API Specification (Core)
-Base URL: `/api/v1`
+## 9. API Specification (Representative Endpoints)
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| /auth/register | POST | Create user |
-| /designs | POST | Upload/create design metadata + file |
-| /designs/{id}/preview | POST | Generate preview (queues job) |
-| /cart | GET/POST | Get or update user cart |
-| /orders | POST | Create order from cart |
-| /orders/{id} | GET | Retrieve order + status |
-| /bulk-requests | POST | Create corporate bulk request |
-| /devices | GET | List device models |
+| /api/auth/register | POST | Create user |
+| /api/device-models | GET | List selectable device models |
+| /api/designs | POST | Upload base design (returns designId) |
+| /api/designs/{id}/preview | POST | Generate preview (async trigger) |
+| /api/orders | POST | Create order from cart items |
+| /api/orders/{id} | GET | Fetch order status |
+| /api/bulk/quote | POST | Submit bulk request |
+| /api/templates | GET | List template metadata (license flags) |
 
-### Sample: POST /designs
+Sample: Create Design (Upload)
+
 Request:
-```json
+```http
+POST /api/designs
+Content-Type: application/json
 {
-  "deviceModelId": "iphone-15-pro",
-  "name": "Galaxy Theme",
-  "sourceType": "upload",
-  "fileKey": "uploads/tmp/abc123.png"
+  "deviceModelId": "iphone-14",
+  "uploadUrl": "https://signed-s3-url",
+  "originalFilename": "artwork.png",
+  "locale": "fr"
 }
 ```
 Response:
 ```json
+{ "designId": "dsg_12345", "status": "uploaded", "next": "/api/designs/dsg_12345/preview" }
+```
+
+Preview Trigger:
+```http
+POST /api/designs/dsg_12345/preview
 {
-  "id": "dsg_01",
-  "status": "draft",
-  "previewUrl": null,
-  "createdAt": "2025-09-30T10:00:00Z"
+  "canvaDesignId": null,
+  "effects": { "gloss": false, "matte": true }
 }
 ```
 
-### Sample: POST /designs/{id}/preview
-Request:
-```json
-{ "mode": "3d" }
-```
-Response:
-```json
+Order Placement:
+```http
+POST /api/orders
 {
-  "jobId": "prv_789",
-  "status": "queued"
-}
-```
-
-### Sample: POST /orders
-Request:
-```json
-{
-  "items": [
-    { "designId": "dsg_01", "sku": "IPH15PRO-SKIN-MATTE", "qty": 1 }
-  ],
-  "shippingAddress": {
-    "fullName": "Aya Ben Ali",
-    "city": "Tunis",
-    "country": "TN",
-    "line1": "Avenue Habib Bourguiba"
-  },
-  "paymentMethod": "flouci"
+  "items": [{ "designId": "dsg_12345", "quantity": 1, "productType":"skin" }],
+  "shippingAddress": { "city":"Tunis","line1":"Rue Example","country":"TN" },
+  "paymentMethod":"COD"
 }
 ```
 Response:
 ```json
+{ "orderId":"ord_9876","status":"pending_payment","totalTND": 59.90 }
+```
+
+Bulk Quote:
+```http
+POST /api/bulk/quote
 {
-  "orderId": "ord_5001",
-  "status": "payment_pending",
-  "amount": { "value": 49.00, "currency": "TND" }
+ "company":"TechX",
+ "items":[
+   {"deviceCategory":"laptop","quantity":200},
+   {"deviceCategory":"phone","quantity":300}
+ ],
+ "brandingAssets":["https://s3/.../logo.svg"]
 }
+```
+Response:
+```json
+{ "quoteId":"bq_101","estimatedTotalTND": 18500, "discountRate": 0.18, "status":"review" }
 ```
 
 ---
 
-## 9. Data Model & ERD
+## 10. Data Model & ERD
+
 Entities:
-- User: id, email, password_hash, locale, role
-- DeviceModel: id, vendor, modelName, category, templateMaskUrl, printableArea (json)
-- Design: id, userId, deviceModelId, status, fileOriginalKey, filePreviewKey, sourceType, licenseTag
-- Order: id, userId, totalAmount, status, paymentProvider, trackingCode
-- OrderItem: id, orderId, designId, sku, unitPrice, quantity
-- BulkRequest: id, orgName, contactEmail, notes, status, volumeEstimate
-- PreviewJob: id, designId, mode, status, resultUrl
+- User(id, email, password_hash, locale_pref, role, created_at)
+- DeviceModel(id, brand, model, category, display_name, mesh_ref, printable_mask_ref)
+- Design(id, user_id, device_model_id, source_ref, preview_ref, canva_design_id, status, created_at)
+- Order(id, user_id, total_amount_tnd, status, payment_method, shipping_address_json, created_at)
+- OrderItem(id, order_id, design_id, product_type, unit_price_tnd, quantity)
+- Template(id, title, license_type, canva_template_id, device_category, active)
+- BulkQuote(id, company, contact_email, items_json, estimated_total_tnd, status)
+- LicenseAsset(id, provider, name, rights_scope, expires_at)
 
 ```mermaid
 erDiagram
-  User ||--o{ Design : "owns"
-  User ||--o{ Order : "places"
-  Order ||--|{ OrderItem : "contains"
-  DeviceModel ||--o{ Design : "target"
-  Design ||--o{ PreviewJob : "generates"
-  User ||--o{ BulkRequest : "submits"
+  User ||--o{ Design : creates
+  User ||--o{ Order : places
+  Order ||--o{ OrderItem : contains
+  Design }o--|| DeviceModel : targets
+  Template }o--|| DeviceModel : fits
+  BulkQuote ||..|| User : requested_by
 ```
 
 ---
 
-## 10. UI Libraries & Components
-| Purpose | Library | Usage |
-|---------|---------|-------|
-| Headless UI | @headlessui/react | Dialogs, modals |
-| Forms | react-hook-form | Design form, address form |
-| Data fetching | React Query | API caching & invalidation |
-| 3D Preview | Three.js | Device model + texture |
-| i18n | next-intl | Locale routing & messages |
-| Images | sharp (backend) | Processing & resizing |
-| State (light) | Zustand | Editor state (layer positions) |
-| Validation | Zod | Frontend schema validation |
-| Accessibility | Radix Primitives (optional) | Focus management |
+## 11. UI Components & Libraries
+- Component Library: Headless UI (menus, dialogs), custom wrappers for RTL.
+- State: Zustand (lightweight editor store), SWR for data fetching (cache).
+- Forms: react-hook-form (upload form, checkout).
+- 3D Preview: Three.js + GLTF loader for device meshes.
+- Image Editing: Canvas API / Fabric.js (optional phase).
+- Internationalization: next-intl.
+- Icons: Lucide or Heroicons.
+- File Upload: Uppy or custom S3 direct upload (signed URL).
+- Notifications: react-hot-toast.
 
 ---
 
-## 11. Design Tokens
+## 12. Design Tokens
 Palette:
-- Primary (#145DA0) – Brand blue (AA on #F8F9FB)  
-- Secondary (#1C7293) – UI accents (AA on white)  
-- Accent (#F1C40F) – Calls to action (contrast meets AA with #1A1A1A)  
-- Background (#F8F9FB) – Light UI base  
-- Text (#1A1A1A) – Primary text on light (AAA vs bg)  
-- Success (#2ECC71) – Confirmation states  
-
+- Primary: #0455A4 (Contrast on #F7F9FC > 4.5:1)
+- Secondary: #FFB703 (Button accents)
+- Accent: #FF3366 (Calls-to-action)
+- Background: #F7F9FC
+- Text: #1A1D21 (Body text)
+- Success: #16A34A
 Fonts:
-- Primary Multilingual: Noto Sans Arabic
-- Secondary UI/Headings: Inter
-
-Spacing scale (example): 4, 8, 12, 16, 24, 32.
-
----
-
-## 12. Accessibility & Internationalization (i18n)
-Accessibility Steps:
-- Semantic landmarks (header/nav/main/footer).
-- ARIA labels on 3D preview canvas (role="img", alt text dynamic).
-- Keyboard: Tab order in editor tools; Esc closes modals.
-- High contrast toggle & force outline styles.
-- Larger hit areas (min 44px).
-- Live region for preview generation status.
-
-i18n Setup:
-1. Use `next-intl` with `app/(locale)/` segment.
-2. Locales: ar (default), fr, en.
-3. Resource separation: `/messages/{locale}.json`.
-4. Right-to-left switching via `<html dir="rtl">` for Arabic.
-5. Price/currency formatting using Intl API with TND.
+- Primary UI / Latin: Inter
+- Arabic Support: Noto Sans Arabic
+Spacing Scale: 4px increments (4,8,12,16,...)
+Radius: 4, 8, 16
+Elevation: shadow-sm, shadow-md, shadow-focus (outline ring)
+WCAG Note: Primary on Background passes AA for normal text (check 4.5:1); accent usage restricted to large text or with accessible foreground.
 
 ---
 
-## 13. Canva API Integration Approach
+## 13. Accessibility & Internationalization
+Accessibility:
+- Provide alt text for all preview canvases (e.g., “Rendered preview of custom iPhone skin design”).
+- ARIA labels on buttons (Add to Cart, Generate Preview).
+- Focus visible styling (outline ring).
+- Keyboard shortcuts: Tab through editor controls; Enter to apply / Space toggle.
+- High-contrast mode toggle (prefers-contrast).
+- Avoid color-only status (add icons).
+i18n:
+- Directory: /messages/{ar,fr,en}.json.
+- Dynamic locale detection via Accept-Language + user preference.
+- RTL support: conditional dir="rtl" for Arabic; logical properties (margin-inline-start).
+- Numeric formatting (Intl.NumberFormat) for TND.
+
+---
+
+## 14. Canva API Integration Strategy
 Workflow:
-1. Admin creates template frames sized per device printable area (includes bleed).
-2. User selects template → Canva design session launched (embedded).
-3. On design publish: Canva webhook triggers Node canva-worker.
-4. Worker requests export (PNG @ 300 DPI + vector/PDF if allowed).
-5. Export stored (S3), design record updated, triggers preview job.
-6. Print-ready file includes cut path overlay from DeviceModel.printableArea.
+1. User opens template editor -> front-end requests Canva embed session token.
+2. Canva embedded (in iframe) returns designId upon publish.
+3. Backend stores mapping (design.canva_design_id).
+4. Node worker fetches published design assets (preview + element layers if supported).
+5. Worker composites design onto device mask & generates:
+   - Web preview (PNG 1024x)
+   - Print-ready 300 DPI PDF (vector pass-through if available)
+6. Updates design.status = 'rendered'.
 
-Django Example (Webhook Endpoint):
+Django Snippet (Create Canva Session - pseudo):
 ```python
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+import requests, os
+
 @api_view(["POST"])
-def canva_webhook(request):
-    payload = request.data
-    design_id = payload.get("designId")
-    # enqueue export job
-    enqueue_canva_export(design_id)
-    return Response({"status": "accepted"})
+def canva_session(request):
+    template_id = request.data.get("templateId")
+    api_key = os.getenv("CANVA_API_KEY")
+    # Hypothetical session creation (actual endpoints depend on Canva partner docs)
+    resp = requests.post("https://api.canva.com/v1/sessions", headers={"Authorization": f"Bearer {api_key}"}, json={
+        "template_id": template_id,
+        "redirect_url": "https://plalap.app/editor/callback"
+    })
+    return Response({"sessionToken": resp.json().get("token")})
 ```
 
-Node Export Pseudocode:
-```js
-async function exportDesign(designId) {
-  const res = await fetch(`https://api.canva.com/v1/designs/${designId}/exports`, {
-    method: "POST",
-    headers: { "Authorization": `Bearer ${process.env.CANVA_API_KEY}` },
-    body: JSON.stringify({ format: "PNG", quality: 100, dpi: 300 })
-  });
-  return res.json();
-}
-```
+Node Export (Already shown earlier) pulls design preview URL—extend to multi-layer if Canva offers.
 
-Applying to Device Model:
-- Overlay mask: multiply or clip path in preprocessing.
-- Composite with safe zone lines for internal QA.
+Print Export:
+- Maintain color profile (sRGB).
+- Output PDF trim lines if required for manufacturing.
 
 ---
 
-## 14. Deployment & Infrastructure Plan
-Frontend (Next.js):
-- Host: Vercel.
-- Environment Vars: API_BASE_URL, NEXT_PUBLIC_I18N_LOCALES, SENTRY_DSN.
-- Build command: `pnpm install && pnpm build`.
-
-Backend (Django):
-- Host: Render / AWS ECS Fargate.
-- Gunicorn + auto-scale on CPU > 70%.
-- File storage: S3 (minio local dev).
-- Redis: Elasticache / Upstash.
-
-Workers:
-- Node workers on AWS ECS / Render background services.
-- Celery for email & order finalization tasks.
-
-CI/CD (GitHub Actions) Example:
+## 15. Deployment & Infrastructure Plan
+Hosting:
+- Frontend: Vercel (environment branches -> preview deployments).
+- Backend (Django): Render, Railway, or AWS ECS Fargate.
+- Node Worker: AWS ECS or AWS Lambda (if modularizing tasks).
+- Database: Managed PostgreSQL (RDS / Neon).
+- Object Storage: S3 (eu-west-1).
+- CDN: CloudFront or Vercel for static & images.
+Environment Variables (examples):
+- DJANGO_SECRET_KEY, DATABASE_URL
+- REDIS_URL
+- AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY
+- CANVA_API_KEY
+- PAYMENT_GATEWAY_KEY
+- EMAIL_API_KEY
+Deploy Steps (Frontend):
+1. Push to main -> GitHub Action -> lint/typecheck/test -> Vercel auto build.
+Django Build:
+- Dockerfile multi-stage (poetry/pip install).
+- Run migrations, collectstatic, deploy.
+GitHub Actions (excerpt):
 ```yaml
 name: CI
 on: [push]
 jobs:
-  build-test:
+  backend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with: { version: 8 }
-      - run: pnpm install
-      - run: pnpm -F plalap-frontend build
-      - name: Backend Tests
-        run: |
-          pip install -r apps/backend/requirements.txt
-          python manage.py test
-  deploy-frontend:
-    needs: build-test
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r apps/backend/requirements.txt
+      - run: python apps/backend/manage.py test
+  frontend:
     runs-on: ubuntu-latest
     steps:
-      - uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          working-directory: apps/frontend
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: cd apps/frontend && npm ci && npm run build
 ```
 
 ---
 
-## 15. Security Checklist
-- Auth: JWT (short-lived) + refresh tokens (HTTP-only Secure cookies).
-- Password hashing: Argon2 or PBKDF2.
-- Rate limiting: Nginx / Django middleware (e.g., 100 req/5m per IP).
-- Input validation: Zod (frontend), DRF serializers (backend).
-- File upload scanning: MIME + size limit + optional ClamAV container.
-- CSP: default-src 'self'; img CDN whitelisted; frame-src Canva domain.
-- CORS: Restrict origins to production domains.
-- Secrets: Stored in platform secrets manager (Vercel / AWS SSM).
-- Logging PII minimization (hash email if used in analytics).
-- Payment: Do not store raw card data (offload to gateway).
-- Licensing: Track licenseTag field & restrict export for unlicensed usage.
+## 16. Security Checklist
+- Authentication: Django session (web) + JWT for API (mobile/future).
+- Passwords: Argon2 (Django password hasher setting).
+- Rate Limiting: Redis token bucket per IP & per user (login, upload).
+- File Upload Security:
+  - Enforce mime whitelist (image/png, image/jpeg, image/svg+xml).
+  - Strip metadata via sharp/Pillow.
+  - Virus scan (ClamAV container) for uploads > threshold.
+- CSP: Default-src 'self'; img CDN; frame allow Canva only.
+- CORS: Restricted origins (production domain).
+- Secrets: Managed in platform env (no commit).
+- Logging: Redact PII (emails hashed in analytics logs).
+- Payment: Never store raw card data (gateway tokenization).
+- Licensing: Track license_type on templates & restrict export if expired.
+- Data Backups: Daily snapshot of PostgreSQL; S3 versioning enabled.
+- Access Control: Staff-only endpoints for license/template management.
+- Input Validation: DRF serializers; length & sanitize (escape HTML).
 
 ---
 
-## 16. Testing & QA Strategy
-Test Layers:
-- Unit: Jest (React components, utility functions) & Pytest for Django logic.
-- Integration: API contract tests (orders, design creation).
-- E2E: Playwright flows (signup → design → checkout).
-- Performance: Lighthouse budget (First Contentful Paint < 1.5s, TTFB < 500ms).
-- Load: k6 scenario for 100 concurrent preview requests.
-- Visual Regression: Percy or Chromatic for editor UI deltas.
-
-Sample Playwright Flow (Pseudo):
-```js
-test("full purchase flow", async ({ page }) => {
-  await page.goto("/");
-  await page.click("text=Sign Up");
-  // ...
-  await page.click("text=Add to Cart");
-  await page.click("text=Checkout");
-});
-```
-
----
-
-## 17. Monitoring & Analytics
-- Error Tracking: Sentry (frontend + backend).
-- Performance: OpenTelemetry export (optional future).
-- Application Metrics: Prometheus/Grafana (request latency, queue depth).
-- Business Metrics: PostHog (design creation funnel).
-- Logging: JSON structured logs (timestamp, userId, traceId).
-- Alerting: Slack webhook for error rate spikes > threshold.
+## 17. Testing & QA Strategy
+- Unit Tests:
+  - Django: serializers, services (pricing, order totals).
+  - Node Worker: image pipeline mocks.
+  - Frontend: components (Jest + React Testing Library).
+- Integration:
+  - Design upload -> preview job -> status poll.
+- E2E:
+  - Playwright: signup → create design → add to cart → order.
+  - Locale toggle scenarios (ar, fr).
+- Performance:
+  - Lighthouse budgets: LCP < 2.8s (3G Fast).
+  - Preview generation < 5s (P95).
+- Load Testing:
+  - k6 for order endpoints & design concurrency.
+- QA Checklist:
+  - RTL layout integrity
+  - Font fallback correctness
+  - Accessibility audit (axe-core CI)
+- Regression:
+  - Visual regression (Chromatic / Playwright screenshots for key flows).
 
 ---
 
-## 18. Product Roadmap (12 Weeks)
-| Sprint (2w) | Goals | Deliverables | Effort |
-|-------------|-------|--------------|--------|
-| 1 | Foundations | Monorepo, Auth, DeviceModel seed | Large |
-| 2 | Design Core | Upload + basic preview (2D) | Large |
-| 3 | Canva Embed + 3D | Canva session + Three.js texture mapping | Large |
-| 4 | Checkout & Orders | Cart, payment integration (Flouci) | Medium |
-| 5 | Exports & Workers | Print-ready pipeline, email events | Medium |
-| 6 | Bulk & Polish | Bulk requests, localization, QA, security hardening | Medium |
+## 18. Monitoring & Analytics
+- Error Tracking: Sentry (frontend & backend).
+- Performance: Vercel Analytics (frontend), APM (OpenTelemetry + OTLP exporter).
+- Logging: Structured JSON (request_id correlation).
+- Metrics:
+  - preview_generation_time_ms
+  - order_conversion_rate
+  - bulk_quote_to_order_ratio
+- User Behavior: Minimal event tracking (design_created, preview_rendered, order_submitted), anonymized user ID.
+- Alerts: Slack webhook on elevated error rate or worker backlog length.
 
-Milestones:
-- M3 (Week 6): Closed beta live.
-- Public Launch: Post stabilization Week 8 if ahead.
+---
+
+## 19. Roadmap (3-Month Plan)
+
+| Phase | Weeks | Objectives | Deliverables | Effort |
+|-------|-------|------------|-------------|--------|
+| 1 | 1–2 | Foundations | Repo, Auth, Device Catalog, Basic Upload | Large |
+| 2 | 3–4 | Preview & Orders | 3D preview, Cart, Order flow (COD), Emails | Large |
+| 3 | 5–6 | Canva Integration | Template editor embed, Worker pipeline | Medium |
+| 4 | 7–8 | Bulk & Pricing | Bulk quote engine, admin dashboards | Medium |
+| 5 | 9–10 | Localization & Perf | Full ar/fr/en, caching, metrics | Medium |
+| 6 | 11–12 | Stretch & Launch Prep | Licensing admin, AI stub, security hardening | Large |
 
 Roles:
-- CTO: Architecture, infra, security.
-- Full-stack Dev (1–2): Features & API.
-- Frontend Dev (1): Editor & preview.
-- Designer: UI kit & templates.
-- Ops: Deployment & monitoring setup (shared early).
+- CTO/Architect: Oversee architecture, security (20% code).
+- Full-stack Dev (2): Frontend + API features.
+- Backend Dev (1): Orders, pricing, integration.
+- Designer (1): UI/UX, multilingual layout.
+- Ops (part-time): Infra, CI/CD tuning.
+
+Milestones:
+- M1 (End Week 2): Internal clickable MVP.
+- M2 (End Week 4): End-to-end order (manual fulfillment).
+- M3 (End Week 8): Bulk + Canva complete.
+- M4 (End Week 12): Public Beta Launch.
 
 ---
 
-## 19. Appendices
+## 20. Appendices
 
-### A. Glossary
-- “Printable Area”: Region safe for design (excludes camera holes).
-- “Bleed”: Extra margin for trimming accuracy.
-- “Design Session”: Canva editing instance.
+### 20.1 Glossary
+- Device Model: Specific hardware variant (e.g., iPhone 14 Pro).
+- Print Mask: Alpha shape for final cut.
+- Preview Render: Composited image on 3D model.
+- Bulk Quote: Multi-quantity price proposal.
 
-### B. Recommended Packages
-- Frontend: next, react-query, three, zustand, react-hook-form, zod.
-- Backend: Django, DRF, Celery, boto3, Pillow.
-- Workers: sharp, node-fetch, bullmq (optional).
-- Testing: Jest, Playwright, Pytest.
-- Security: django-cors-headers, helmet (Node).
-- 3D: three, @react-three/fiber (optional).
+### 20.2 Recommended Packages
+- Python: drf-spectacular, Pillow, redis, boto3.
+- Node: sharp, axios, @aws-sdk/client-s3, bullmq (queue).
+- Frontend: next-intl, three, zustand, react-hook-form, headlessui.
+- Testing: pytest, Jest, Playwright, k6.
+- Security: django-axes (optional lockouts), bleach (sanitization if needed).
 
-### C. Project Skeleton Commands
+### 20.3 Project Skeleton Commands
 ```bash
 mkdir plalap && cd plalap
-pnpm init
-pnpm add -w next react react-dom typescript
-django-admin startproject backend apps/backend
-mkdir -p services/canva-worker
-touch services/canva-worker/server.js
+# Frontend
+npx create-next-app@latest apps/frontend
+# Backend
+django-admin startproject config apps/backend
+# Node Worker
+mkdir -p services/canva-worker && cd services/canva-worker && npm init -y
+# Shared packages
+mkdir -p packages/{ui,types,config}
 ```
 
-### D. Sample README Template
+### 20.4 README Template
 ```markdown
 # Plalap
-Custom device skins & cases for Tunisia (Skinit-like).
+Custom device skins & accessories platform (Tunisia localized).
+
 ## Stack
-Next.js, Django REST, Node workers, Canva API, PostgreSQL, Redis.
-## Dev
-pnpm dev (frontend), python manage.py runserver (backend), node server.js (workers).
+- Frontend: Next.js + Tailwind
+- Backend: Django REST
+- Worker: Node (Canva render)
+- Storage: S3
+- DB: PostgreSQL
+- Cache: Redis
+
+## Dev Quickstart
+1. cp apps/backend/config/settings_example.py settings.py
+2. docker compose up -d db redis
+3. (Backend) python manage.py migrate
+4. (Frontend) npm run dev
+5. (Worker) node server.js
+
 ## Env
-Copy .env.example → .env. Set DB + CANVA_API_KEY.
+- DJANGO_SECRET_KEY=
+- DATABASE_URL=
+- REDIS_URL=
+- CANVA_API_KEY=
+
+## Scripts
+- test, lint, build pipelines (see package.json / workflows)
 ```
 
-### E. Ethical Considerations
-- Intellectual Property: Users must confirm rights for uploaded artwork; DMCA-style takedown process.
-- Licensed Content: Segregate protected brand templates; gating with licenseTag.
-- User Privacy: Limit retention of raw analytics; anonymize IP addresses.
-- Content Moderation: Flag disallowed imagery (later AI moderation).
-- Transparency: Terms & usage guidelines localized in Arabic/French.
+### 20.5 Ethical Considerations
+- IP Compliance: Users attest ownership; license filter for restricted logos.
+- Moderation: Basic hash/keyword scanning; escalate flagged offensive content.
+- Data Minimization: Only store necessary PII for fulfillment.
+- Localization Respect: Culturally appropriate template curation.
+- Environmental Note: Encourage consolidated shipping to reduce footprint.
+
+### 20.6 Future Enhancements
+- AI: Pattern generation (stable diffusion fine-tuned on abstract motif dataset).
+- Creator Marketplace: Revenue split tracking.
+- Subscription Packs: Monthly themed skin sets.
+- WebAR: Device overlay using USDZ/GLB.
 
 ---
 
-## 20. PDF Generation Instructions
-Generate PDF from this Markdown:
+## Conversion to PDF
+Suggested Command:
 ```bash
-pandoc "Plalap — Concept & Implementation Plan (Tunisia).md" \
-  -o "Plalap — Concept & Implementation Plan (Tunisia).pdf" \
-  --from gfm --toc --metadata title="Plalap — Concept & Implementation Plan (Tunisia)"
+pandoc "Plalap — Concept & Implementation Plan (Tunisia).md" -o "Plalap — Concept & Implementation Plan (Tunisia).pdf" \
+  --from markdown --toc --pdf-engine=xelatex \
+  --metadata title="Plalap — Concept & Implementation Plan (Tunisia)" \
+  -V mainfont="Inter" -V monofont="JetBrains Mono"
 ```
 
-Or use:
+If Arabic shaping issues arise:
 ```bash
-npx @marp-team/marp-cli "Plalap — Concept & Implementation Plan (Tunisia).md" -o plan.pdf
+pandoc "Plalap — Concept & Implementation Plan (Tunisia).md" -o plan.pdf \
+  --pdf-engine=xelatex -V mainfont="Noto Sans Arabic" -V lang=ar
 ```
 
 ---
 
-## 21. Base64 PDF (Placeholder)
-NOTE: Below is a placeholder. Generate a fresh PDF using instructions above for production accuracy.
-
+## Base64 PDF Note
+Full high-fidelity PDF embedding is optional. Generate using pandoc above, then:
+```bash
+base64 "Plalap — Concept & Implementation Plan (Tunisia).pdf" > plalap_plan.b64
+```
+Embed between:
 ---BEGIN BASE64 PDF---
-UEhBQ0VIT0xERVI6IEdlbmVyYXRlIHBkZiBsb2NhbGx5gdKAdGVjaG5pY2FsIGNvbnRlbnQgbm90IGFjdHVhbCBmaW5hbCBkb2N1bWVudC4=
+...your base64...
 ---END BASE64 PDF---
 
----
-
-END OF DOCUMENT
+(Generation omitted here to preserve accuracy; produce after local rendering.)
